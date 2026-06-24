@@ -22,7 +22,6 @@ function ArmarioList({ onEdit, onRefresh }) {
 
   const handleDelete = async (id) => {
     if (!confirm('Tem certeza que deseja excluir este armário?')) return;
-    
     try {
       await api.delete(`/armarios/${id}`);
       alert('Armário excluído com sucesso!');
@@ -53,20 +52,12 @@ function ArmarioList({ onEdit, onRefresh }) {
             <tr key={armario.id_armario}>
               <td>{armario.id_armario}</td>
               <td>{armario.tamanho}</td>
-              <td>
-                <span className={`status-badge ${armario.status.toLowerCase()}`}>
-                  {armario.status}
-                </span>
-              </td>
+              <td><span className={`status-badge ${armario.status.toLowerCase()}`}>{armario.status}</span></td>
               <td>{armario.senha_atual || '-'}</td>
               <td>{armario.data_ultima_limpeza?.split('T')[0] || '-'}</td>
               <td>
-                <button onClick={() => onEdit(armario)} className="btn-edit">
-                  Editar
-                </button>
-                <button onClick={() => handleDelete(armario.id_armario)} className="btn-delete">
-                  Excluir
-                </button>
+                <button onClick={() => onEdit(armario)} className="btn-edit">Editar</button>
+                <button onClick={() => handleDelete(armario.id_armario)} className="btn-delete">Excluir</button>
               </td>
             </tr>
           ))}

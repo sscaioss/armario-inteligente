@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ArmarioList from './components/ArmarioList';
-import ArmarioForm from './components/ArmarioForm';
-import ArmarioEdit from './components/ArmarioEdit';
+import ArmarioList from "./components/ArmarioList";
+import ArmarioForm from "./components/ArmarioForm";
+import ArmarioEdit from "./components/ArmarioEdit";
 import './App.css';
 
 function App() {

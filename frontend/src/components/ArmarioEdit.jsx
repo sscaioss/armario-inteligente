@@ -15,13 +15,12 @@ function ArmarioEdit({ armario, onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     try {
       await api.put(`/armarios/${armario.id_armario}`, formData);
       alert('Armário atualizado com sucesso!');
       onSuccess();
     } catch (error) {
-      alert('Erro ao atualizar: ' + error.response?.data?.error || error.message);
+      alert('Erro ao atualizar: ' + (error.response?.data?.error || error.message));
     }
   };
 
@@ -37,7 +36,6 @@ function ArmarioEdit({ armario, onSuccess }) {
             <option value="Grande">Grande</option>
           </select>
         </div>
-
         <div className="form-group">
           <label>Status:</label>
           <select name="status" value={formData.status} onChange={handleChange} required>
@@ -47,28 +45,14 @@ function ArmarioEdit({ armario, onSuccess }) {
             <option value="Limpeza Pendente">Limpeza Pendente</option>
           </select>
         </div>
-
         <div className="form-group">
           <label>Senha Atual:</label>
-          <input 
-            type="text" 
-            name="senha_atual" 
-            value={formData.senha_atual}
-            onChange={handleChange}
-          />
+          <input type="text" name="senha_atual" value={formData.senha_atual} onChange={handleChange} />
         </div>
-
         <div className="form-group">
           <label>Data da Última Limpeza:</label>
-          <input 
-            type="date" 
-            name="data_ultima_limpeza" 
-            value={formData.data_ultima_limpeza}
-            onChange={handleChange}
-            required
-          />
+          <input type="date" name="data_ultima_limpeza" value={formData.data_ultima_limpeza} onChange={handleChange} required />
         </div>
-
         <button type="submit" className="btn-submit">Atualizar</button>
       </form>
     </div>

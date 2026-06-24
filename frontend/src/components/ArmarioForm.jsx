@@ -15,13 +15,12 @@ function ArmarioForm({ onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     try {
       await api.post('/armarios', formData);
       alert('Armário cadastrado com sucesso!');
       onSuccess();
     } catch (error) {
-      alert('Erro ao cadastrar: ' + error.response?.data?.error || error.message);
+      alert('Erro ao cadastrar: ' + (error.response?.data?.error || error.message));
     }
   };
 
@@ -37,7 +36,6 @@ function ArmarioForm({ onSuccess }) {
             <option value="Grande">Grande</option>
           </select>
         </div>
-
         <div className="form-group">
           <label>Status:</label>
           <select name="status" value={formData.status} onChange={handleChange} required>
@@ -47,29 +45,14 @@ function ArmarioForm({ onSuccess }) {
             <option value="Limpeza Pendente">Limpeza Pendente</option>
           </select>
         </div>
-
         <div className="form-group">
           <label>Senha Atual:</label>
-          <input 
-            type="text" 
-            name="senha_atual" 
-            value={formData.senha_atual}
-            onChange={handleChange}
-            placeholder="Ex: 1234"
-          />
+          <input type="text" name="senha_atual" value={formData.senha_atual} onChange={handleChange} placeholder="Ex: 1234" />
         </div>
-
         <div className="form-group">
           <label>Data da Última Limpeza:</label>
-          <input 
-            type="date" 
-            name="data_ultima_limpeza" 
-            value={formData.data_ultima_limpeza}
-            onChange={handleChange}
-            required
-          />
+          <input type="date" name="data_ultima_limpeza" value={formData.data_ultima_limpeza} onChange={handleChange} required />
         </div>
-
         <button type="submit" className="btn-submit">Cadastrar</button>
       </form>
     </div>

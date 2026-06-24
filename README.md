@@ -1,149 +1,108 @@
-# 🔐 Armário Inteligente - Sistema de Gestão
+# Armário Inteligente - Sistema de Gestão
 
-> Sistema web para gerenciamento de armários inteligentes com CRUD completo, desenvolvido como projeto final da disciplina de Banco de Dados do IFES Serra.
+Projeto prático desenvolvido para a disciplina de Banco de Dados do IFES Serra. O sistema consiste em uma aplicação web com foco no gerenciamento de armários por meio de um CRUD completo.
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://react.dev/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql)](https://www.postgresql.org/)
-[![Express](https://img.shields.io/badge/Express-4-lightgrey)](https://expressjs.com/)
+## Sobre o Projeto
 
----
+O sistema foi criado para gerenciar armários de locação em ambientes públicos e comerciais. A aplicação realiza todas as operações básicas (inserção, consulta, alteração e exclusão) para a entidade Armário, permitindo o controle de status, tamanho, senha atual e registro de higienização.
 
-## 📖 Sobre o Projeto
+A implementação atende aos seguintes requisitos do projeto:
+- Ambiente web (RNF01)
+- Banco de dados relacional (RNF02)
+- Interface de fácil utilização (RNF03)
+- Desenvolvimento em React (RNF05)
 
-O **Armário Inteligente** é uma aplicação web que permite o gerenciamento completo de armários de locação em ambientes como estações, shoppings e academias. O sistema realiza o **CRUD** da entidade **Armário**, permitindo que atendentes cadastrem, consultem, editem e removam armários, mantendo o controle de status, tamanhos, senhas de acesso e histórico de limpeza.
+## Tecnologias Utilizadas
 
-O projeto foi desenvolvido para atender aos requisitos funcionais e não funcionais especificados no documento de definição de requisitos, incluindo:
-- ✅ Ambiente web (RNF01)
-- ✅ Banco de dados relacional (RNF02)
-- ✅ Interface simples e intuitiva (RNF03)
-- ✅ Desenvolvido em React (RNF05)
+- **Backend:** Node.js, Express.js e driver `pg` (node-postgres)
+- **Frontend:** React 18, Vite e Axios
+- **Banco de Dados:** PostgreSQL 15
 
----
+## Estrutura de Diretórios
 
-## ✨ Funcionalidades
-
-O sistema implementa o **CRUD completo** da entidade Armário:
-
-| Operação | Descrição |
-|----------|-----------|
-| **Create** | Cadastrar novo armário informando tamanho, status, senha e data da última limpeza |
-| **Read** | Listar todos os armários em formato de tabela ou consultar um armário específico |
-| **Update** | Editar informações de armários existentes (status, senha, tamanho, etc.) |
-| **Delete** | Excluir armários do sistema com confirmação de segurança |
-
-### Recursos extras:
-- 🎨 Interface responsiva e moderna com gradientes
-- 🏷️ Badges coloridos por status (Disponível, Ocupado, Manutenção, Limpeza Pendente)
-- ⚡ Atualização em tempo real após operações
-- 🔒 Confirmação antes de excluir registros
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-### Backend
-- **Node.js** - Ambiente de execução JavaScript
-- **Express.js** - Framework web para API REST
-- **pg (node-postgres)** - Driver PostgreSQL para Node.js
-- **CORS** - Middleware para permitir requisições cross-origin
-
-### Frontend
-- **React 18** - Biblioteca para construção de interfaces
-- **Vite** - Build tool e dev server
-- **Axios** - Cliente HTTP para comunicação com a API
-- **CSS3** - Estilização responsiva
-
-### Banco de Dados
-- **PostgreSQL 15** - SGBD relacional
-
-### Ferramentas
-- **Git** - Controle de versão
-- **GitHub** - Hospedagem do repositório
-
----
-
-## 📁 Estrutura do Projeto
+```text
 armario-inteligente/
 ├── backend/
-│ ├── routes/
-│ │ └── armarios.js # Rotas CRUD da API
-│ ├── db.js # Conexão com PostgreSQL
-│ ├── server.js # Servidor Express
-│ └── package.json
+│   ├── routes/
+│   │   └── armarios.js      # Rotas CRUD da API
+│   ├── db.js                # Configuração da conexão com PostgreSQL
+│   ├── server.js            # Ponto de entrada do servidor Express
+│   └── package.json
 ├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ │ ├── ArmarioList.jsx # Listagem
-│ │ │ ├── ArmarioForm.jsx # Cadastro
-│ │ │ └── ArmarioEdit.jsx # Edição
-│ │ ├── services/
-│ │ │ └── api.js # Configuração Axios
-│ │ ├── App.jsx
-│ │ └── App.css
-│ └── package.json
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ArmarioList.jsx  # Tela de listagem de armários
+│   │   │   ├── ArmarioForm.jsx  # Formulário de cadastro
+│   │   │   └── ArmarioEdit.jsx  # Tela de edição
+│   │   ├── services/
+│   │   │   └── api.js           # Conexão HTTP do frontend com o backend
+│   │   ├── App.jsx
+│   │   └── App.css
+│   └── package.json
 └── README.md
+```
 
-
----
-
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
 ### Pré-requisitos
+- Node.js instalado (versão 18 ou superior)
+- PostgreSQL instalado e em execução
+- Git para clonagem do repositório
 
-Antes de começar, você precisará ter instalado:
-- [Node.js](https://nodejs.org/) (v18 ou superior)
-- [PostgreSQL](https://www.postgresql.org/download/) (v12 ou superior)
-- [Git](https://git-scm.com/)
-
-### 1️⃣ Clonar o Repositório
-
+### 1. Clonar o repositório
 ```bash
-git clone https://github.com/SEU-USUARIO/armario-inteligente.git
+git clone [https://github.com/seu-usuario/armario-inteligente.git](https://github.com/seu-usuario/armario-inteligente.git)
 cd armario-inteligente
+```
 
-
-2️⃣ Configurar o Banco de Dados
-Acesse o PostgreSQL e crie o banco:
+### 2. Configurar o Banco de Dados
+Acesse o terminal do PostgreSQL e crie a base de dados do projeto:
+```sql
 CREATE DATABASE armario_inteligente;
-Execute os scripts SQL de criação e carga (disponíveis no documento do trabalho):
+```
+
+Em seguida, execute os scripts de estrutura e os dados iniciais fornecidos no relatório do trabalho:
+```bash
 psql -U postgres -d armario_inteligente -f scripts/criacao.sql
 psql -U postgres -d armario_inteligente -f scripts/carga.sql
+```
 
-3️⃣ Configurar e Iniciar o Backend
+### 3. Executar o Backend
+Navegue até a pasta do servidor, instale as dependências e inicie a aplicação:
+```bash
 cd backend
 npm install
+```
 
-Edite o arquivo db.js com suas credenciais do PostgreSQL:
+Antes de iniciar, edite o arquivo `backend/db.js` informando as credenciais locais do seu PostgreSQL:
+```javascript
 const pool = new Pool({
-  user: 'postgres',              // seu usuário
+  user: 'postgres',
   host: 'localhost',
   database: 'armario_inteligente',
-  password: 'sua_senha',         // sua senha
+  password: 'sua_senha_aqui',
   port: 5432
 });
-
+```
 
 Inicie o servidor:
+```bash
 npm start
+```
+O backend ficará disponível em `http://localhost:3001`.
 
-O backend estará rodando em: http://localhost:3001
-4️⃣ Iniciar o Frontend
-Em um novo terminal:
+### 4. Executar o Frontend
+Abra um novo terminal na raiz do projeto, acesse a pasta do cliente e execute o ambiente de desenvolvimento:
+```bash
 cd frontend
 npm install
 npm run dev
+```
+O frontend ficará disponível em `http://localhost:5173`.
 
-O frontend estará disponível em: http://localhost:5173
-
-
-👥 Equipe
-Projeto desenvolvido pelos alunos do IFES Serra para a disciplina de Banco de Dados:
-Álvaro Neto
-Christian Borges
-Caio Sperandio
-Elson Ramos
-Ramon Lima
-
-
-
+## Integrantes da Equipe
+- Álvaro Neto
+- Christian Borges
+- Caio Sperandio
+- Elson Ramos
+- Ramon Lima
