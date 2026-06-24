@@ -1,14 +1,17 @@
 import pg from 'pg';
+import dotenv from 'dotenv';
+
 const { Pool } = pg;
+dotenv.config();
 
 const pool = new Pool({
-  user: 'avnadmin',
-  host: 'pg-15276cb8-caiosperandio2005-316a.e.aivencloud.com',
-  database: 'defaultdb',
-  password: 'AVNS_dHOKQZtD5Ce7jGrfsiK',
-  port: 28221,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
   ssl: {
-    rejectUnauthorized: false  // Necessário para Aiven
+    rejectUnauthorized: false
   }
 });
 

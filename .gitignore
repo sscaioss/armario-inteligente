@@ -30,3 +30,9 @@ desktop.ini
 # Banco de dados local
 *.db
 *.sqlite
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+backend/.env
