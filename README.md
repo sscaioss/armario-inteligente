@@ -1,104 +1,81 @@
-# Armário Inteligente - Sistema de Gestão
+# Armário Inteligente
 
-Projeto prático desenvolvido para a disciplina de Banco de Dados do IFES Serra. O sistema consiste em uma aplicação web com foco no gerenciamento de armários por meio de um CRUD completo.
+Sistema de gestão de armários desenvolvido para a disciplina de Banco de Dados do IFES Serra.
 
-## Sobre o Projeto
+## O que o sistema faz
 
-O sistema foi criado para gerenciar armários de locação em ambientes públicos e comerciais. A aplicação realiza todas as operações básicas (inserção, consulta, alteração e exclusão) para a entidade Armário, permitindo o controle de status, tamanho, senha atual e registro de higienização.
+Permite cadastrar, listar, editar e excluir armários através de uma interface web. O backend se comunica com um banco PostgreSQL (usamos Aiven em nuvem).
 
-A implementação atende aos seguintes requisitos do projeto:
-- Ambiente web (RNF01)
-- Banco de dados relacional (RNF02)
-- Interface de fácil utilização (RNF03)
-- Desenvolvimento em React (RNF05)
+## Tecnologias
 
-## Tecnologias Utilizadas
+- **Backend:** Node.js + Express
+- **Frontend:** React + Vite
+- **Banco:** PostgreSQL
+- **Conexão:** Axios (frontend) e pg (backend)
 
-- **Backend:** Node.js, Express.js e driver `pg` (node-postgres)
-- **Frontend:** React 18, Vite e Axios
-- **Banco de Dados:** PostgreSQL 15
+## Estrutura do projeto
 
-## Estrutura de Diretórios
 
 ```text
 armario-inteligente/
 ├── backend/
-│   ├── routes/
-│   │   └── armarios.js      # Rotas CRUD da API
-│   ├── db.js                # Configuração da conexão com PostgreSQL
-│   ├── server.js            # Ponto de entrada do servidor Express
-│   └── package.json
+│ ├── routes/armarios.js # CRUD completo
+│ ├── db.js # Conexão com PostgreSQL
+│ ├── server.js # Servidor Express
+│ └── .env # Credenciais (não vai pro GitHub)
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ArmarioList.jsx  # Tela de listagem de armários
-│   │   │   ├── ArmarioForm.jsx  # Formulário de cadastro
-│   │   │   └── ArmarioEdit.jsx  # Tela de edição
-│   │   ├── services/
-│   │   │   └── api.js           # Conexão HTTP do frontend com o backend
-│   │   ├── App.jsx
-│   │   └── App.css
-│   └── package.json
+│ ├── src/
+│ │ ├── components/ # Telas do sistema
+│ │ ├── services/api.js # Conexão com backend
+│ │ └── App.jsx
+│ └── index.html
 └── README.md
 ```
 
-## Como Executar o Projeto
+## Como rodar
 
-### Pré-requisitos
-- Node.js instalado (versão 18 ou superior)
-- PostgreSQL instalado e em execução
-- Git para clonagem do repositório
-
-### 1. Clonar o repositório
+### 1. Clone o repositório
 ```bash
-git clone [https://github.com/seu-usuario/armario-inteligente.git](https://github.com/seu-usuario/armario-inteligente.git)
+git clone https://github.com/sscaioss/armario-inteligente.git
 cd armario-inteligente
-```
 
-### 2. Configurar o Banco de Dados
-Acesse o terminal do PostgreSQL e crie a base de dados do projeto:
-```sql
-CREATE DATABASE armario_inteligente;
-```
 
-Em seguida, execute os scripts de estrutura e os dados iniciais fornecidos no relatório do trabalho:
-```bash
-psql -U postgres -d armario_inteligente -f scripts/criacao.sql
-psql -U postgres -d armario_inteligente -f scripts/carga.sql
-```
 
-### 3. Executar o Backend
-Navegue até a pasta do servidor, instale as dependências e inicie a aplicação:
+### 2. Configure o banco
+# Crie um banco PostgreSQL e execute os scripts SQL do relatório do trabalho.
+
+### 3. Rode o backend
 ```bash
 cd backend
 npm install
+
+# Crie o arquivo .env com suas credenciais:
+```text
+DB_USER=seu_usuario
+DB_HOST=localhost
+DB_NAME=armario_inteligente
+DB_PASSWORD=sua_senha
+DB_PORT=5432
 ```
 
-Antes de iniciar, edite o arquivo `backend/db.js` informando as credenciais locais do seu PostgreSQL:
-```javascript
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'armario_inteligente',
-  password: 'sua_senha_aqui',
-  port: 5432
-});
-```
-
-Inicie o servidor:
+# Inicie o servidor:
 ```bash
 npm start
-```
-O backend ficará disponível em `http://localhost:3001`.
 
-### 4. Executar o Frontend
-Abra um novo terminal na raiz do projeto, acesse a pasta do cliente e execute o ambiente de desenvolvimento:
+### 4. Rode o frontend
+Abra outro terminal:
 ```bash
 cd frontend
 npm install
 npm run dev
-```
-O frontend ficará disponível em `http://localhost:5173`.
+
+## Acesse: http://localhost:5173
+
+### Rotas da API
+- GET /api/armarios - Lista todos
+- POST /api/armarios - Cria novo
+- PUT /api/armarios/:id - Atualiza
+- DELETE /api/armarios/:id - Exclui
 
 ## Integrantes da Equipe
 - Álvaro Neto
